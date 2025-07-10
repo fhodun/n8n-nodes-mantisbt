@@ -6,29 +6,28 @@ import type {
 } from 'n8n-workflow';
 import { NodeConnectionType, NodeOperationError } from 'n8n-workflow';
 
-export class ExampleNode implements INodeType {
+export class MantisNode implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Example Node',
-		name: 'exampleNode',
+		displayName: 'MantisBT',
+		name: 'mantisbt',
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		icon: 'file:mantisbt.png',
 		group: ['transform'],
 		version: 1,
-		description: 'Basic Example Node',
+		description: 'Work with Mantis Bug Tracker',
 		defaults: {
-			name: 'Example Node',
+			name: 'MantisBT',
 		},
 		inputs: [NodeConnectionType.Main],
 		outputs: [NodeConnectionType.Main],
 		usableAsTool: true,
 		properties: [
-			// Node properties which the user gets displayed and
-			// can change on the node.
 			{
-				displayName: 'My String',
-				name: 'myString',
+				displayName: 'Issue ID',
+				name: 'issueId',
 				type: 'string',
 				default: '',
-				placeholder: 'Placeholder value',
-				description: 'The description text',
+				required: true,
 			},
 		],
 	};

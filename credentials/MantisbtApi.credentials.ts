@@ -5,25 +5,22 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class ExampleCredentialsApi implements ICredentialType {
-	name = 'exampleCredentialsApi';
-	displayName = 'Example Credentials API';
+export class MantisbtApi implements ICredentialType {
+	name = 'mantisbtApi';
+	displayName = 'Example MantisBT Credentials API';
 
-	documentationUrl = 'https://your-docs-url';
+	documentationUrl = 'https://github.com/fhodun/n8n-nodes-mantisbt';
 
 	properties: INodeProperties[] = [
-		// The credentials to get from user and save encrypted.
-		// Properties can be defined exactly in the same way
-		// as node properties.
 		{
-			displayName: 'User Name',
-			name: 'username',
+			displayName: 'Base URL',
+			name: 'baseUrl',
 			type: 'string',
-			default: '',
+			default: 'https://example.mantishub.com',
 		},
 		{
-			displayName: 'Password',
-			name: 'password',
+			displayName: 'API Token',
+			name: 'apiToken',
 			type: 'string',
 			typeOptions: {
 				password: true,
@@ -32,8 +29,6 @@ export class ExampleCredentialsApi implements ICredentialType {
 		},
 	];
 
-	// This credential is currently not used by any node directly
-	// but the HTTP Request node can use it to make requests.
 	// The credential is also testable due to the `test` property below
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
