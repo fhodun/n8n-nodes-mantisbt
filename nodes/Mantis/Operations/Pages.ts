@@ -1,8 +1,12 @@
-import { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'n8n-workflow';
+import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
-export const resource: INodeProperties | INodePropertyOptions | INodePropertyCollection = {
-	name: 'Page',
-	value: 'mantisPageVerb',
+export const resource: INodePropertyOptions = {
+	name: 'Pages',
+	value: 'mantisPagesVerb',
+};
+
+export const enum Operations {
+	GetIssueViewPage = 'getIssueViewPage',
 };
 
 export const operations: INodeProperties[] = [

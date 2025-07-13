@@ -1,14 +1,16 @@
 import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
 export const resource: INodePropertyOptions = {
-	name: 'Config',
-	value: 'mantisConfigVerb',
+	name: 'Issue Notes and Attachments',
+	value: 'mantisIssueNotesAttachmentsVerb',
 };
 
 export const enum Operations {
-	GetConfigurationOption = 'getConfigurationOption',
-	GetMultipleConfigurationOptions = 'getMultipleConfigurationOptions',
-	SetConfigs = 'setConfigs',
+	CreateAnIssueNote = 'createAnIssueNote',
+	CreateAnIssueNoteWithTimeTracking = 'createAnIssueNoteWithTimeTracking',
+	CreateAnIssueNoteWithAttachment = 'createAnIssueNoteWithAttachment',
+	DeleteAnIssueNote = 'deleteAnIssueNote',
+	AddAttachmentsToIssue = 'addAttachmentsToIssue',
 }
 
 export const operations: INodeProperties[] = [

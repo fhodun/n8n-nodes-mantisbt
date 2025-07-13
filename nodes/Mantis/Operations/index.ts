@@ -1,33 +1,29 @@
-import { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'n8n-workflow';
+import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
 // import Config from './Config';
-// import Filter from './Filter';
+// import Filters from './Filters';
 // import Impersonation from './Impersonation';
-import Issue from './Issue';
-// import IssueNotes from './IssueNotes';
+import Issues from './Issues';
+// import IssueNotesAttachments from './IssueNotesAttachments';
 // import Lang from './Lang';
-import Page from './Page';
-import Project from './Project';
-// import User from './User';
+import Pages from './Pages';
+import Projects from './Projects';
+// import Users from './Users';
 // import UserTokens from './UserTokens';
 
 const verbs = [
 	// Config,
-	// Filter,
+	// Filters,
 	// Impersonation,
-	Issue,
-	// IssueNotes,
+	Issues,
+	// IssueNotesAttachments,
 	// Lang,
-	Page,
-	Project,
-	// User,
+	Pages,
+	...Projects,
+	// Users,
 	// UserTokens,
 ];
 
-export const mantisVerbsResources: (
-	| INodeProperties
-	| INodePropertyOptions
-	| INodePropertyCollection
-)[] = verbs.flatMap((verb) => verb.resource);
+export const mantisVerbsResources: INodePropertyOptions[] = verbs.flatMap((verb) => verb.resource);
 
 export const mantisVerbsOperations: INodeProperties[] = verbs.flatMap((verb) => verb.operations);

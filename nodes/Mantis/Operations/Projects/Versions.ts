@@ -1,9 +1,17 @@
-import { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'n8n-workflow';
+import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
-export const resource: INodeProperties | INodePropertyOptions | INodePropertyCollection = {
-	name: 'Project',
-	value: 'mantisProjectVerb',
+export const resource: INodePropertyOptions = {
+	name: 'Projects/Project Versions',
+	value: 'mantisProjectVersionsVerb',
 };
+
+export const enum Operations {
+	CreateProjectVersion = 'createProjectVersion',
+	GetProjectVersions = 'getProjectVersions',
+	GetProjectVersion = 'getProjectVersion',
+	UpdateProjectVersion = 'updateProjectVersion',
+	DeleteProjectVersion = 'deleteProjectVersion',
+}
 
 export const operations: INodeProperties[] = [
 	{

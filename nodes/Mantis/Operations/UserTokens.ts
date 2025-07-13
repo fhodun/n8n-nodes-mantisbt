@@ -1,9 +1,17 @@
-import { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'n8n-workflow';
+import { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
-export const resource: INodeProperties | INodePropertyOptions | INodePropertyCollection = {
+export const resource: INodePropertyOptions = {
 	name: 'User Tokens',
 	value: 'mantisUserTokensVerb',
 };
+
+export const enum Operations {
+	CreateTokenForMe = 'createTokenForMe',
+	DeleteTokenForMe = 'deleteTokenForMe',
+	CreateTokenForUser = 'createTokenForUser',
+	DeleteTokenForUser = 'deleteTokenForUser',
+}
+
 export const operations: INodeProperties[] = [
 	{
 		displayName: 'Operation',

@@ -1,6 +1,7 @@
 import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { NodeConnectionType } from 'n8n-workflow';
 import { mantisVerbsResources, mantisVerbsOperations } from './Operations';
+import { options } from './options';
 export class Mantis implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'MantisBT',
@@ -40,6 +41,7 @@ export class Mantis implements INodeType {
 				options: mantisVerbsResources,
 				default: 'mantisIssueVerb',
 			},
+			...options,
 			...mantisVerbsOperations,
 		],
 	};
