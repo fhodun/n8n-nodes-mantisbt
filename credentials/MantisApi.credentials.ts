@@ -5,12 +5,10 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class MantisbtApi implements ICredentialType {
-	name = 'mantisbtApi';
-	displayName = 'Example MantisBT Credentials API';
-
+export class MantisApi implements ICredentialType {
+	name = 'mantisApi';
+	displayName = 'MantisBT API Credentials';
 	documentationUrl = 'https://github.com/fhodun/n8n-nodes-mantisbt';
-
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Base URL',
@@ -29,17 +27,15 @@ export class MantisbtApi implements ICredentialType {
 		},
 	];
 
-	// The credential is also testable due to the `test` property below
+	// This allows the credential to be used by other parts of n8n
+	// stating how this credential is injected as part of the request
+	// An example is the Http Request node that can make generic calls
+	// reusing this credential
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			auth: {
-				username: '={{ $credentials.username }}',
-				password: '={{ $credentials.password }}',
-			},
-			qs: {
-				// Send this as part of the query string
-				n8n: 'rocks',
+			headers: {
+				Authorization: '={{$credentials.apiToken}}',
 			},
 		},
 	};
@@ -47,8 +43,9 @@ export class MantisbtApi implements ICredentialType {
 	// The block below tells how this credential can be tested
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://example.com/',
-			url: '',
+			baseURL: '={{$credentials.baseUrl + "/api/rest"}}',
+			method: 'GET',
+			url: '/users/me',
 		},
 	};
 }
