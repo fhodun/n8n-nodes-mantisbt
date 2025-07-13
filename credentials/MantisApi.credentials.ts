@@ -7,7 +7,7 @@ import {
 
 export class MantisApi implements ICredentialType {
 	name = 'mantisApi';
-	displayName = 'MantisBT API Credentials';
+	displayName = 'MantisBT Credentials API';
 	documentationUrl = 'https://github.com/fhodun/n8n-nodes-mantisbt';
 	properties: INodeProperties[] = [
 		{

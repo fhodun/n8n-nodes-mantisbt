@@ -1,6 +1,11 @@
-import { INodeProperties } from 'n8n-workflow';
+import { INodeProperties, INodePropertyCollection, INodePropertyOptions } from 'n8n-workflow';
 
-export const userVerbOperations: INodeProperties[] = [
+export const resource: INodeProperties | INodePropertyOptions | INodePropertyCollection = {
+	name: 'User',
+	value: 'mantisUserVerb',
+};
+
+export const operations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -8,7 +13,7 @@ export const userVerbOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['mantisUserVerb'],
+				resource: [resource.value],
 			},
 		},
 		options: [
@@ -106,4 +111,7 @@ export const userVerbOperations: INodeProperties[] = [
 	},
 ];
 
-export default [...userVerbOperations];
+export default {
+	resource: resource,
+	operations: operations,
+};
