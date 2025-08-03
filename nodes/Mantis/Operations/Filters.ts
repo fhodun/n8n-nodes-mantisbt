@@ -22,7 +22,19 @@ export const operations: INodeProperties[] = [
 				resource: [resource.value],
 			},
 		},
-		options: [],
+		options: [
+			{
+				name: 'Get All Filters',
+				value: Operations.GetAllFilters,
+				action: 'Get all filters',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/filters',
+					},
+				},
+			},
+		],
 		default: '',
 	},
 ];

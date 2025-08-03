@@ -10,12 +10,17 @@ import { Operations as ProjectsSubProjectsOperations } from './Operations/Projec
 import { Operations as ProjectsUsersOperations } from './Operations/Projects/Users';
 import { Operations as ProjectsVersionsOperations } from './Operations/Projects/Versions';
 
+// @ts-ignore
 import Filters, { Operations as FiltersOperations } from './Operations/Filters';
 import { Operations as UsersOperations } from './Operations/Users';
+// @ts-ignore
 import { Operations as UserTokensOperations } from './Operations/UserTokens';
+// @ts-ignore
 import { Operations as ConfigOperations } from './Operations/Config';
+// @ts-ignore
 import { Operations as LangOperations } from './Operations/Lang';
 import { Operations as PagesOperations } from './Operations/Pages';
+// @ts-ignore
 import { Operations as ImpersonationOperations } from './Operations/Impersonation';
 
 const allResourceValues: (string | number | boolean)[] = mantisVerbsResources.map(
@@ -168,11 +173,111 @@ export const options: INodeProperties[] = [
 			},
 		},
 	},
+	// {
+	// 	displayName: 'Filter',
+	// 	name: Options.FilterId,
+	// 	type: 'fixedCollection',
+	// 	typeOptions: {
+	// 		multipleValues: false,
+	// 	},
+	// 	default: {},
+	// 	options: [
+	// 		{
+	// 			name: 'preset',
+	// 			displayName: 'Wybierz z listy',
+	// 			values: [
+	// 				{
+	// 					displayName: 'Predefiniowany filtr',
+	// 					name: 'preset',
+	// 					type: 'options',
+	// 					options: [
+	// 						{
+	// 							displayName: 'None',
+	// 							name: 'None',
+	// 							value: '',
+	// 						},
+	// 						{
+	// 							name: 'Assigned to Me',
+	// 							value: 'assigned',
+	// 						},
+	// 						{
+	// 							name: 'Reported by Me',
+	// 							value: 'reported',
+	// 						},
+	// 						{
+	// 							name: 'Monitored By Me',
+	// 							value: 'monitored',
+	// 						},
+	// 						{
+	// 							name: 'Unassigned',
+	// 							value: 'unassigned',
+	// 						},
+	// 					],
+	// 					default: '',
+	// 				},
+	// 			],
+	// 		},
+	// 		{
+	// 			name: 'custom',
+	// 			displayName: 'Własny filtr',
+	// 			values: [
+	// 				{
+	// 					displayName: 'Custom Filter',
+	// 					name: 'custom',
+	// 					type: 'options',
+	// 					typeOptions: {
+	// 						loadOptions: {
+	// 							routing: {
+	// 								request: {
+	// 									method: 'GET',
+	// 									url: '/filters',
+	// 								},
+	// 								output: {
+	// 									postReceive: [
+	// 										{
+	// 											type: 'rootProperty',
+	// 											properties: {
+	// 												property: 'filters',
+	// 											},
+	// 										},
+	// 										{
+	// 											type: 'setKeyValue',
+	// 											properties: {
+	// 												name: '={{$responseItem.id}} ({{$responseItem.name}})',
+	// 												value: '={{$responseItem.id}}',
+	// 											},
+	// 										},
+	// 										{
+	// 											type: 'sort',
+	// 											properties: {
+	// 												key: 'name',
+	// 											},
+	// 										},
+	// 									],
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 					default: '',
+	// 				},
+	// 			],
+	// 		},
+	// 	],
+	// 	displayOptions: {
+	// 		show: {
+	// 			operation: [
+	// 				IssuesOperations.GetAllIssues,
+	// 				FiltersOperations.GetFilter,
+	// 				FiltersOperations.DeleteFilter,
+	// 			],
+	// 			resource: allResourceValues,
+	// 		},
+	// 	},
+	// },
 	{
 		displayName: 'Filter',
 		name: Options.FilterId,
 		type: 'options',
-		// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
 		options: [
 			{
 				displayName: 'None',
@@ -196,6 +301,39 @@ export const options: INodeProperties[] = [
 				value: 'unassigned',
 			},
 		],
+		typeOptions: {
+			loadOptions: {
+				routing: {
+					request: {
+						method: 'GET',
+						url: '/filters',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: {
+									property: 'filters',
+								},
+							},
+							{
+								type: 'setKeyValue',
+								properties: {
+									name: '={{$responseItem.id}} ({{$responseItem.name}})',
+									value: '={{$responseItem.id}}',
+								},
+							},
+							{
+								type: 'sort',
+								properties: {
+									key: 'name',
+								},
+							},
+						],
+					},
+				},
+			},
+		},
 		default: '',
 		displayOptions: {
 			show: {
@@ -213,124 +351,7 @@ export const options: INodeProperties[] = [
 		name: Options.TagId,
 		type: 'number',
 		default: null,
-		description: '',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
-		displayOptions: {
-			show: {
-				operation: [],
-				resource: allResourceValues,
-			},
-		},
-	},
-	{
-		displayName: 'Project ID',
-		name: Options.ProjectId,
-		type: 'number',
-		default: null,
-		description: 'ID of the project',
+		description: 'ID of the tag',
 		displayOptions: {
 			show: {
 				operation: [],

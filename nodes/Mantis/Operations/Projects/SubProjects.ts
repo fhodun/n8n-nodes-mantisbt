@@ -9,7 +9,7 @@ export const enum Operations {
 	AddSubProject = 'addSubProject',
 	UpdateSubProject = 'updateSubProject',
 	DeleteSubProject = 'deleteSubProject',
-};
+}
 
 export const operations: INodeProperties[] = [
 	{

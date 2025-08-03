@@ -7,7 +7,7 @@ export const resource: INodePropertyOptions = {
 
 export const enum Operations {
 	GetIssueViewPage = 'getIssueViewPage',
-};
+}
 
 export const operations: INodeProperties[] = [
 	{
