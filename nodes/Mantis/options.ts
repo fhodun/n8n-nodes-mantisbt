@@ -87,7 +87,9 @@ export const options: INodeProperties[] = [
 		name: Options.Select,
 		type: 'string',
 		default: '',
+		// eslint-disable-next-line n8n-nodes-base/node-param-placeholder-miscased-id
 		placeholder: 'id,summary,description',
+		// eslint-disable-next-line n8n-nodes-base/node-param-description-miscased-id
 		description:
 			'Comma-separated list of fields to select (e.g., "id,summary,description"). Leave empty for all fields.',
 		displayOptions: {

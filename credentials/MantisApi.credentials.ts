@@ -14,7 +14,9 @@ export class MantisApi implements ICredentialType {
 			displayName: 'Base URL',
 			name: 'baseUrl',
 			type: 'string',
-			default: 'https://example.mantishub.com',
+			placeholder: 'https://example.mantishub.com',
+			default: '',
+			required: true,
 		},
 		{
 			displayName: 'API Token',
@@ -24,13 +26,9 @@ export class MantisApi implements ICredentialType {
 				password: true,
 			},
 			default: '',
+			required: true,
 		},
 	];
-
-	// This allows the credential to be used by other parts of n8n
-	// stating how this credential is injected as part of the request
-	// An example is the Http Request node that can make generic calls
-	// reusing this credential
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
@@ -39,12 +37,9 @@ export class MantisApi implements ICredentialType {
 			},
 		},
 	};
-
-	// The block below tells how this credential can be tested
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: '={{$credentials.baseUrl + "/api/rest"}}',
-			method: 'GET',
+			baseURL: '={{$credentials.baseUrl}}/api/rest',
 			url: '/users/me',
 		},
 	};
